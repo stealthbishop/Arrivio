@@ -9,7 +9,7 @@ export default defineConfig({
   base: '/',
   build: {
     // Output directly into Spring Boot's static resources folder
-    outDir: path.resolve(__dirname, 'backend/src/main/resources/static'),
+    outDir: 'backend/src/main/resources/static',
     emptyOutDir: true,
   },
   server: {
