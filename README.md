@@ -151,6 +151,10 @@ The backend README documents the following routes:
 
 See the [backend README](backend/README.md) for request examples and additional details. Treat sample values and telemetry as demo data unless they have been validated against a live deployment.
 
+## 🤖 Optional Groq AI chat
+
+The Spring Boot backend includes an optional server-side AI chat endpoint at `POST /api/ai/chat`. Configure `GROQ_API_KEY` in the ignored `backend/.env` file or as a backend environment variable. Never put the key in frontend variables or commit it. See [backend AI setup](backend/README.md#-optional-groq-ai-chat) for instructions.
+
 ## 🗺️ Roadmap
 
 - [ ] Connect the frontend ride search and booking flows to the backend API.
