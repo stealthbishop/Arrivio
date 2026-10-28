@@ -35,6 +35,48 @@ The H2 Database web console is accessible at **`http://localhost:8080/h2-console
 
 ---
 
+## 🤖 Optional Groq AI chat
+
+The backend includes an optional server-side Groq chat endpoint. The API key is read only by Spring Boot; do not put it in React/Vite variables such as `VITE_*`.
+
+### Configure locally
+
+1. From the repository root, copy `backend/.env.example` to `backend/.env`.
+2. Open `backend/.env` and replace `your_groq_api_key_here` with your Groq API key. Never commit this file.
+3. Start Spring Boot from the `backend` directory so the local `.env` file is loaded:
+
+**Windows PowerShell**
+```powershell
+cd backend
+.\mvnw.cmd spring-boot:run
+```
+
+**macOS / Linux**
+```bash
+cd backend
+./mvnw spring-boot:run
+```
+
+You can instead configure `GROQ_API_KEY` and optionally `GROQ_MODEL` as real environment variables in your terminal or deployment dashboard. Environment variables override values loaded from the local file.
+
+### Chat endpoint
+
+```http
+POST http://localhost:8080/api/ai/chat
+Content-Type: application/json
+
+{"message":"How can I plan a shared ride?"}
+```
+
+Example response:
+```json
+{"reply":"..."}
+```
+
+If the key is missing, the endpoint returns a service-unavailable response. Provider errors are returned as a generic error so provider details and secrets are not exposed. Keep your Groq key server-side and rotate it immediately if it is ever exposed.
+
+---
+
 ## 📡 REST API Reference
 
 ### 1. Corridor Matching & Rides (`/api/rides`)
